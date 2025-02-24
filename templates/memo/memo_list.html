@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}メモ帳{% endblock %}
+{% block h1 %}メモ一覧{% endblock %}
+
+
+{% block content %}
+
+  <form method="get" action="{% url 'memo:list-memo' %}" class="mb-3 row">
+    <label for="sc" class="col-form-label">タグ検索</label>
+    <div class="col-sm-8">
+      <input id="sc" class="pr=3 form-control" type="text" name="tag" placeholder="空白で全表示できます" value="{{ request.GET.tag }}">
+    </div>
+    <button type="submit" class=" col-sm-1 btn btn-primary">検索</button>
+  </form>
+  {% for item in Shelf %}
+  <div class="p-4 m-4 border border-secondary rounded">
+    <h3 class="text-sccess">{{ item.title }}</h3>
+    <h5 class="fw-light pb-3">{{ item.text|truncatechars:8 }}</h5>
+    <h6 class="fw-light">タグ：{{ item.tag }}</h6>
+    <div class="mt-2">
+      <a href="{% url 'memo:detail-memo' item.pk %}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">詳細へ</a>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}

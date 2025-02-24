@@ -1,0 +1,9 @@
+初回ログイン時tutorialを表示
+
+
+memo:
+No module named 'exexx'が出たときは
+urlになっていないか(正解はurls)
+
+
+python3 manage.py runserver

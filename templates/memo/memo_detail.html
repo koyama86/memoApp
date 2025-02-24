@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ Shelf.title }}{% endblock %}
+{% block h1 %}メモ詳細{% endblock %}
+
+{% block content %}
+<div class="p-4 m-4 bh-light border border-secondary rounded">
+  <h2 class="text-secondary">{{ Shelf.title }}</h2>
+  <p class="mb-4">{{ Shelf.text|linebreaks }}</p>
+  <h6 class="card-title mb-3 fw-light">タグ：{{ Shelf.tag }}</h6>
+        <a href="{% url 'memo:update-memo' Shelf.pk %}" class="btn btn-primary">編集する</a>
+        <a href="{% url 'memo:delete-memo' Shelf.pk %}" class="btn btn-primary btn-secondary">削除する</a>
+        <p class="mt-3">
+          <a href="{% url 'memo:list-memo' %}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">一覧へ戻る</a>
+        </p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
